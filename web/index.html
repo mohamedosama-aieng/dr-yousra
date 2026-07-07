@@ -6,57 +6,74 @@
 <title>Dokkan Decor — كورس الطباعة على القماش من البيت</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-/* ======== RESET & GLOBAL ======== */
+/* ======== RESET & DESIGN TOKENS ======== */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   font-family:'Cairo',sans-serif;
-  background:linear-gradient(180deg,#0a1a15 0%,#0d2218 40%,#0a1a15 100%);
-  color:#fff;line-height:1.7;overflow-x:hidden;
+  background:linear-gradient(180deg,#fff0f3 0%,#ffe0e8 40%,#fff0f3 100%);
+  color:#2a0f1c;line-height:1.7;overflow-x:hidden;
 }
 img{max-width:100%;display:block}
 a{text-decoration:none;color:inherit}
 ul{list-style:none}
 
 :root{
-  --green:#00e676;--green-dark:#00b359;--green-accent:#4ade80;
-  --green-card:rgba(0,230,118,0.3);--red:#ff3b30;--yellow:#ffd700;
-  --white:#fff;--off-white:#e8e8e8;--gray:#aaa;
-  --card-bg:rgba(255,255,255,0.04);--page-bg:#0a1a15;
-  --radius-card:16px;--radius-btn:10px;--max-width:1100px;
+  --rose-primary:#e11d74;
+  --rose-dark:#b9105e;
+  --rose-light:#ff6fa5;
+  --magenta:#c2185b;
+  --red-accent:#e63950;
+  --blush-bg-1:#fff0f3;
+  --blush-bg-2:#ffe0e8;
+  --blush-bg-3:#ffe8ef;
+  --rose-card-border:rgba(225,29,116,0.35);
+  --stars-color:#e11d74;
+  --white:#ffffff;
+  --dark-text:#2a0f1c;
+  --gray-text:#6b5a61;
+  --card-bg:rgba(225,29,116,0.04);
+  --card-bg-light:#fde8ee;
+  --page-bg:linear-gradient(180deg,#fff0f3 0%,#ffe0e8 40%,#fff0f3 100%);
+  --font:'Cairo',sans-serif;
+  --max-width:1100px;
+  --radius-card:16px;
+  --radius-btn:10px;
 }
 
 .container{max-width:var(--max-width);margin:0 auto;padding:0 20px;width:100%}
 
+/* CTA Button */
 .cta-btn{
-  display:inline-block;background:var(--green);color:#000;font-weight:800;
+  display:inline-block;background:var(--rose-primary);color:#fff;font-weight:800;
   font-size:18px;padding:14px 48px;border-radius:var(--radius-btn);border:none;
   cursor:pointer;transition:background .3s;font-family:inherit;text-align:center;
 }
-.cta-btn:hover{background:var(--green-dark)}
+.cta-btn:hover{background:var(--rose-dark)}
 .cta-btn--lg{font-size:20px;padding:16px 56px;border-radius:12px}
 .cta-btn--block{display:block;width:100%}
 .cta-btn--xl{height:56px;font-size:18px;display:flex;align-items:center;justify-content:center;border-radius:12px}
 
-.stars{color:var(--yellow);font-size:18px;letter-spacing:2px}
+/* Stars */
+.stars{color:var(--stars-color);font-size:18px;letter-spacing:2px}
 .avatars-row{display:flex;align-items:center;justify-content:center;margin-bottom:8px}
-.avatar-circle{width:40px;height:40px;border-radius:50%;background:#333;border:2px solid #0a1a15;margin-left:-10px}
-.avatar-circle:first-child{margin-left:0}
-.rating-text{color:#fff;font-size:14px}
+.avatar-circle{width:40px;height:40px;border-radius:50%;background:#e0c4d0;border:2px solid #fff;margin-right:-10px;flex-shrink:0}
+.avatar-circle:first-child{margin-right:0}
+.rating-text{color:var(--gray-text);font-size:14px}
 
 /* ======== NAVBAR ======== */
 .navbar{
-  position:fixed;top:0;left:0;right:0;z-index:9999;background:#000;
+  position:fixed;top:0;left:0;right:0;z-index:9999;background:#580f30;
   height:70px;display:flex;align-items:center;
 }
 .navbar .container{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .navbar-left{display:flex;align-items:center;gap:16px}
-.timer-label{font-size:13px;color:var(--red);white-space:nowrap}
+.timer-label{font-size:13px;color:var(--red-accent);white-space:nowrap}
 .timer-blocks{display:flex;align-items:center;gap:4px}
 .timer-block{text-align:center}
-.timer-num{font-size:28px;font-weight:900;color:var(--red);line-height:1;font-variant-numeric:tabular-nums}
-.timer-num-label{font-size:10px;color:var(--gray);display:block}
-.timer-colon{font-size:28px;font-weight:900;color:var(--red);line-height:1}
+.timer-num{font-size:28px;font-weight:900;color:var(--red-accent);line-height:1;font-variant-numeric:tabular-nums}
+.timer-num-label{font-size:10px;color:rgba(255,255,255,0.5);display:block}
+.timer-colon{font-size:28px;font-weight:900;color:var(--red-accent);line-height:1}
 .navbar .cta-btn{padding:12px 36px;font-size:16px;white-space:nowrap}
 
 /* ======== SECTIONS ======== */
@@ -66,121 +83,98 @@ section{padding:60px 0}
 .hero{padding-top:120px}
 .hero-content{max-width:700px;margin:0 auto;text-align:center}
 .hero-badge{
-  display:inline-block;border:1px solid rgba(255,255,255,0.2);
-  padding:8px 20px;border-radius:50px;font-size:14px;margin-bottom:20px
+  display:inline-block;background:#fff;border:1px solid var(--rose-card-border);
+  padding:8px 20px;border-radius:50px;font-size:14px;color:var(--rose-dark);margin-bottom:20px
 }
-.hero-title{font-size:42px;font-weight:800;line-height:1.3;margin-bottom:16px}
-.hero-title .green{color:var(--green)}
-.hero-sub{font-size:16px;color:#ccc;margin-bottom:12px}
-.hero-link-text{color:var(--green);text-decoration:underline;font-size:16px;margin-bottom:24px}
-.hero-video-label{font-size:14px;color:var(--gray);margin-bottom:16px}
+.hero-title{font-size:42px;font-weight:800;line-height:1.3;margin-bottom:16px;color:var(--dark-text)}
+.hero-title .rose{color:var(--rose-primary)}
+.hero-sub{font-size:16px;color:var(--gray-text);margin-bottom:12px}
+.hero-link-text{color:var(--rose-primary);text-decoration:underline;font-size:16px;margin-bottom:24px;cursor:default}
+.hero-video-label{font-size:14px;color:var(--gray-text);margin-bottom:16px}
 
-.vsl-wrapper{max-width:900px;margin:0 auto 24px;border-radius:16px;overflow:hidden;position:relative}
-.vsl-iframe-wrap{position:relative;padding-bottom:56.25%;height:0}
-.vsl-iframe-wrap iframe{
-  position:absolute;top:0;left:0;width:100%;height:100%;
-  border:0;border-radius:16px;
+/* VSL Player Placeholder */
+.vsl-wrapper{max-width:1000px;margin:0 auto 24px;border-radius:12px;overflow:hidden;position:relative}
+.vsl-placeholder{
+  height:500px;background:#4a0b28;position:relative;display:flex;
+  align-items:center;justify-content:center;flex-direction:column
 }
+.vsl-sound-pill{
+  position:absolute;top:16px;right:16px;
+  background:rgba(0,0,0,0.65);color:#fff;padding:6px 14px;
+  border-radius:20px;font-size:13px;display:flex;align-items:center;gap:6px;z-index:2
+}
+.vsl-label{color:rgba(255,255,255,0.7);font-size:18px;font-weight:600}
+.vsl-controls{
+  position:absolute;bottom:0;left:0;right:0;height:44px;
+  background:rgba(88,15,48,0.85);display:flex;align-items:center;
+  padding:0 16px;gap:12px;color:#fff;font-size:13px
+}
+.vsl-progress{flex:1;height:4px;background:rgba(255,255,255,0.2);border-radius:2px;position:relative}
+.vsl-progress-fill{position:absolute;top:0;right:0;height:100%;width:30%;background:var(--rose-primary);border-radius:2px}
 
 .hero-cta-wrap{text-align:center;margin-top:8px}
 .hero-cta-wrap .cta-btn{margin-bottom:16px}
 
-/* ======== SECTION A — STUDENT RESULTS CAROUSEL ======== */
-.results{padding-top:40px}
-.results-title{font-size:32px;font-weight:800;text-align:center;line-height:1.4;max-width:700px;margin:0 auto 12px}
-.results-title .green{color:var(--green)}
-.results-sub{text-align:center;color:var(--gray);font-size:16px;max-width:700px;margin:0 auto 40px}
-.results-banner{
-  background:linear-gradient(135deg,#000 0%,#0d2218 100%);padding:40px 20px;text-align:center;margin:40px 0
-}
-.results-banner-text{font-size:36px;font-weight:800;color:var(--green)}
-.carousel-wrap{max-width:1100px;margin:0 auto;position:relative}
-.carousel-viewport{overflow:hidden;margin:0 50px}
-.testimonial-track{display:flex;gap:16px;overflow-x:auto;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-.testimonial-track::-webkit-scrollbar{display:none}
-.testimonial-card{
-  min-width:260px;height:560px;background:#1a1a2e;border-radius:28px;
-  overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.3);position:relative;flex-shrink:0
-}
-.testimonial-card iframe{width:100%;height:100%;border:0;border-radius:28px}
-.testimonial-card-img{width:100%;height:100%;object-fit:cover;border-radius:28px}
-.testimonial-card-inner{
-  background:#1a2a25;font-size:13px;padding:24px 16px;text-align:center;line-height:1.9;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%
-}
-.carousel-arrow{
-  position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;
-  border-radius:50%;background:rgba(255,255,255,0.1);border:none;color:#fff;
-  font-size:24px;cursor:pointer;display:flex;align-items:center;justify-content:center;
-  z-index:10;transition:background .3s
-}
-.carousel-arrow:hover{background:rgba(255,255,255,0.2)}
-.carousel-arrow.prev{right:0}.carousel-arrow.next{left:0}
-.carousel-dots{display:flex;justify-content:center;gap:6px;margin-top:16px;flex-wrap:wrap}
-.carousel-dots .dot{
-  width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.2);
-  border:none;cursor:pointer;transition:all .3s
-}
-.carousel-dots .dot.active{background:#ec4899;transform:scale(1.3)}
-.results-cta-wrap{text-align:center;margin-top:40px}
-.results-cta-wrap .cta-btn{margin-bottom:16px}
-
 /* ======== PRICING ======== */
 .pricing-card{
-  max-width:600px;margin:0 auto;border-radius:20px;border:1px solid var(--green-card);
-  background:rgba(0,230,118,0.05);padding:40px;text-align:center
+  max-width:600px;margin:0 auto;border-radius:20px;border:1px solid var(--rose-card-border);
+  background:var(--blush-bg-3);padding:40px;text-align:center;
+  box-shadow:0 4px 24px rgba(225,29,116,0.08)
 }
 .pricing-badge{
-  display:inline-flex;align-items:center;gap:6px;border:1px solid var(--green-card);
-  padding:6px 20px;border-radius:50px;font-size:14px;color:var(--green);margin-bottom:20px
+  display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--rose-card-border);
+  padding:6px 20px;border-radius:50px;font-size:14px;color:var(--rose-primary);margin-bottom:20px
 }
-.pricing-badge-dot{width:8px;height:8px;border-radius:50%;background:var(--green)}
-.pricing-title{font-size:32px;font-weight:800;margin-bottom:8px}
-.pricing-sub{color:var(--gray);font-size:15px;margin-bottom:24px}
-.pricing-inner{background:rgba(0,0,0,0.3);border-radius:12px;padding:24px;margin-bottom:20px}
-.pricing-inner-label{font-size:13px;color:var(--gray);margin-bottom:4px}
-.pricing-inner-warn{font-size:13px;color:var(--gray);margin-bottom:8px}
-.pricing-amount{font-size:56px;font-weight:900;color:var(--green);line-height:1}
+.pricing-badge-dot{width:8px;height:8px;border-radius:50%;background:var(--rose-primary)}
+.pricing-title{font-size:32px;font-weight:800;margin-bottom:8px;color:var(--dark-text)}
+.pricing-sub{color:var(--gray-text);font-size:15px;margin-bottom:24px}
+.pricing-inner{background:rgba(225,29,116,0.06);border-radius:12px;padding:24px;margin-bottom:20px}
+.pricing-inner-label{font-size:13px;color:var(--gray-text);margin-bottom:4px}
+.pricing-inner-warn{font-size:13px;color:var(--gray-text);margin-bottom:8px}
+.pricing-amount{font-size:56px;font-weight:900;color:var(--rose-primary);line-height:1}
 .pricing-bar-row{display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px}
-.pricing-bar-row .white{color:#fff}.pricing-bar-row .gray{color:var(--gray)}
-.pricing-bar{height:10px;border-radius:5px;background:rgba(255,255,255,0.15);overflow:hidden;margin-bottom:24px}
-.pricing-bar-fill{height:100%;width:65%;background:var(--green);border-radius:5px}
+.pricing-bar-row .dark{color:var(--dark-text)}
+.pricing-bar-row .gray{color:var(--gray-text)}
+.pricing-bar{height:10px;border-radius:5px;background:rgba(225,29,116,0.12);overflow:hidden;margin-bottom:24px}
+.pricing-bar-fill{height:100%;width:65%;background:var(--rose-primary);border-radius:5px}
 
-/* ======== TESTIMONIALS ======== */
-.experts{background:#fff;color:#111}
-.experts-title{text-align:center;font-size:30px;margin-bottom:40px}
-.experts-title .green{color:#00a651}
-.experts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+/* ======== EXPERTS ======== */
+.experts{background:#fff}
+.experts-title{text-align:center;font-size:32px;margin-bottom:40px;color:var(--dark-text)}
+.experts-title .rose{color:var(--rose-primary);font-weight:800}
+.experts-grid{display:flex;justify-content:center;align-items:flex-start;gap:24px;flex-wrap:wrap}
 .expert-card{
-  background:#fff;border:1px solid #e0e0e0;border-radius:16px;
-  padding:28px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,0.04)
+  background:#fff;border:1px solid #f0c4d8;border-radius:16px;
+  padding:16px;text-align:center;box-shadow:0 2px 12px rgba(225,29,116,0.06);
+  display:flex;justify-content:center;align-items:center
 }
-.expert-avatar{width:80px;height:80px;border-radius:50%;background:#ddd;margin:0 auto 24px;position:relative;overflow:hidden}
-.expert-avatar img{width:100%;height:100%;object-fit:cover}
+.expert-avatar{width:auto;height:auto;max-width:100%;border-radius:12px;background:transparent;margin:0 auto;overflow:hidden}
+.expert-avatar img{width:auto;height:auto;max-width:min(420px,100%);max-height:520px;object-fit:contain;display:block;margin:0 auto;border-radius:12px}
 .expert-check{
   position:absolute;bottom:0;left:-4px;width:26px;height:26px;border-radius:50%;
   background:#1d9bf0;color:#fff;font-size:14px;display:flex;align-items:center;
   justify-content:center;border:3px solid #fff
 }
-.expert-name{font-size:18px;font-weight:700;margin-bottom:12px}
-.expert-text{font-size:14px;color:#555;text-align:right;line-height:1.8;margin-bottom:16px}
-.expert-stars{color:var(--yellow);font-size:16px}
+.expert-name{font-size:18px;font-weight:700;margin-bottom:12px;color:var(--dark-text)}
+.expert-text{font-size:14px;color:var(--gray-text);text-align:right;line-height:1.8;margin-bottom:16px}
+.expert-stars{color:var(--stars-color);font-size:16px}
 
 /* ======== JOURNEY ======== */
-.journey{background:#fff;color:#111}
-.journey-title{text-align:center;font-size:28px;font-weight:800;margin-bottom:40px;max-width:900px;margin-left:auto;margin-right:auto}
+.journey{background:#fff}
+.journey-title{text-align:center;font-size:28px;font-weight:800;margin-bottom:40px;max-width:900px;margin-left:auto;margin-right:auto;color:var(--dark-text)}
 .journey-graphic{text-align:center;margin-bottom:48px}
-.journey-graphic .my{font-size:36px;color:#00a651;font-style:italic;font-family:Georgia,serif;display:block}
-.journey-graphic .jny{font-size:72px;font-weight:900;color:#00a651;line-height:0.9;font-family:Georgia,serif}
+.journey-graphic .my{font-size:36px;color:var(--rose-primary);font-style:italic;font-family:Georgia,serif;display:block}
+.journey-graphic .jny{font-size:72px;font-weight:900;color:var(--rose-primary);line-height:0.9;font-family:Georgia,serif}
 .journey-list{max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:32px}
 .journey-item{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
 .journey-item.rev .journey-photo{order:-1}
 .journey-photo{
-  width:230px;height:280px;border-radius:12px;overflow:hidden;
-  display:flex;align-items:center;justify-content:center;background:#e0e0e0
+  width:auto;height:auto;max-width:100%;border-radius:12px;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;background:#e0c4d0;
+  justify-self:center;margin:0 auto
 }
-.journey-photo img{width:100%;height:100%;object-fit:cover}
-.journey-year{font-size:48px;font-weight:900;color:#00a651;line-height:1;margin-bottom:8px}
+.journey-photo img{width:auto;height:auto;max-width:280px;max-height:360px;object-fit:contain;display:block}
+.journey-year{font-size:48px;font-weight:900;color:var(--rose-primary);line-height:1;margin-bottom:8px}
 .journey-text{font-size:15px;color:#444;line-height:1.8}
 
 /* ======== CTA STRIP ======== */
@@ -188,52 +182,54 @@ section{padding:60px 0}
 .cta-strip .cta-btn{margin-bottom:16px}
 
 /* ======== SUCCESS STORIES ======== */
-.success{background:#fff;color:#111}
-.success-title{text-align:center;font-size:30px;margin-bottom:8px}
-.success-title .green{color:#00a651;font-weight:800}
-.success-sub{text-align:center;color:#666;font-size:15px;max-width:700px;margin:0 auto 40px}
-.success-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.success-card{border-radius:16px;overflow:hidden;border:1.5px solid #e0e0e0;position:relative}
-.success-thumb{
-  aspect-ratio:9/16;background:#e0e0e0;display:flex;align-items:center;
-  justify-content:center;position:relative;overflow:hidden
+.success{background:#fff}
+.success-title{text-align:center;font-size:30px;margin-bottom:8px;color:var(--dark-text)}
+.success-title .rose{color:var(--rose-primary);font-weight:800}
+.success-sub{text-align:center;color:var(--gray-text);font-size:15px;max-width:700px;margin:0 auto 40px}
+.success-row{display:flex;justify-content:center;gap:32px;flex-wrap:wrap}
+.success-card{border-radius:16px;overflow:hidden;border:2px solid var(--rose-primary);max-width:320px;box-shadow:0 4px 24px rgba(225,29,116,0.2)}
+.success-video-wrap{position:relative;width:320px;aspect-ratio:9/16;background:#4a0b28}
+
+/* ======== TESTIMONIALS ======== */
+.testimonials{background:#fff;padding:60px 0}
+.testimonials-title{text-align:center;font-size:30px;margin-bottom:8px;color:var(--dark-text)}
+.testimonials-title .rose{color:var(--rose-primary);font-weight:800}
+.testimonials-sub{text-align:center;color:var(--gray-text);font-size:15px;max-width:700px;margin:0 auto 40px}
+.testimonials-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:900px;margin:0 auto}
+.testimonial-card{
+  background:#fff;border:none;border-radius:16px;
+  overflow:hidden;box-shadow:0 2px 12px rgba(225,29,116,0.05)
 }
-.success-thumb img{width:100%;height:100%;object-fit:cover}
-.success-play{
-  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  background:#7c3aed;color:#fff;width:60px;height:44px;border-radius:10px;
-  display:flex;align-items:center;justify-content:center;font-size:20px
+.testimonial-card img{width:100%;height:auto;display:block}
+@media(max-width:768px){
+  .testimonials-grid{grid-template-columns:1fr;max-width:450px}
 }
-.success-meta{display:flex;align-items:center;gap:8px;padding:8px 12px;background:#f9f9f9;font-size:13px;color:#777}
-.success-meta-bar{flex:1;height:3px;background:#ddd;border-radius:2px;position:relative}
-.success-meta-bar-fill{position:absolute;top:0;right:0;height:100%;width:40%;background:var(--green);border-radius:2px}
 
 /* ======== CURRICULUM ======== */
-.curriculum{padding:60px 0}
 .curriculum-header{text-align:center;margin-bottom:40px}
-.curriculum-header h2{font-size:36px;font-weight:400}
-.curriculum-header h2 .green{color:var(--green);font-weight:800}
-.curriculum-sub{color:var(--gray);font-size:15px;margin-top:8px}
-.chapter-blocks{max-width:750px;margin:0 auto;display:flex;flex-direction:column;gap:24px}
+.curriculum-header h2{font-size:36px;font-weight:400;color:var(--dark-text)}
+.curriculum-header h2 .rose{color:var(--rose-primary);font-weight:800}
+.curriculum-sub{color:var(--gray-text);font-size:15px;margin-top:8px}
+.chapter-blocks{max-width:700px;margin:0 auto;display:flex;flex-direction:column;gap:24px}
 .chapter{border-radius:16px;overflow:hidden}
 .chapter-banner{
-  height:280px;background:#1a2a25;display:flex;align-items:center;
-  justify-content:center;position:relative;overflow:hidden
+  background:#580f30;display:flex;align-items:center;
+  justify-content:center;position:relative;overflow:hidden;border-radius:16px 16px 0 0
 }
-.chapter-banner img{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0}
 .chapter-banner-text{
   position:relative;z-index:2;font-size:42px;font-weight:900;
   color:#fff;text-shadow:0 2px 20px rgba(0,0,0,0.7);text-align:center;padding:24px
 }
+.chapter-banner img{position:relative;width:100%;height:auto;display:block;z-index:1}
 .chapter-badge{
   position:absolute;top:16px;right:16px;z-index:3;
-  background:rgba(0,0,0,0.6);color:#fff;padding:6px 16px;
+  background:rgba(74,14,42,0.7);color:#fff;padding:6px 16px;
   border-radius:20px;font-size:14px;font-weight:600
 }
-.chapter-strip{background:#f5f0e8;padding:20px 24px;text-align:center;color:#111}
-.chapter-strip h3{font-size:18px;font-weight:700;margin-bottom:8px}
+.chapter-strip{background:var(--card-bg-light);padding:20px 24px;text-align:center;border-radius:0 0 16px 16px}
+.chapter-strip h3{font-size:18px;font-weight:700;margin-bottom:8px;color:var(--dark-text)}
 .chapter-toggle{
-  color:#00a651;font-size:15px;cursor:pointer;display:inline-flex;
+  color:var(--rose-primary);font-size:15px;cursor:pointer;display:inline-flex;
   align-items:center;gap:6px;user-select:none;font-weight:700
 }
 .chapter-toggle .arrow{transition:transform .4s ease}
@@ -241,123 +237,237 @@ section{padding:60px 0}
 .chapter.open .lessons-list{max-height:700px}
 .chapter.open .arrow{transform:rotate(180deg)}
 .lessons-list ol{padding:12px 0;display:flex;flex-direction:column;gap:10px}
-.lessons-list li{display:flex;align-items:flex-start;gap:12px;font-size:15px;color:#ccc;padding:0 16px}
-.lesson-bullet{color:var(--green);font-size:18px;flex-shrink:0}
+.lessons-list li{display:flex;align-items:flex-start;gap:12px;font-size:15px;color:var(--dark-text);padding:0 16px}
+.lesson-bullet{color:var(--rose-primary);font-size:18px;flex-shrink:0}
 .curriculum-cta{text-align:center;margin-top:40px}
 .curriculum-cta .cta-btn{margin-bottom:16px}
 
 /* ======== BONUSES ======== */
-.bonuses{padding:60px 0}
 .bonuses-header{text-align:center;margin-bottom:40px}
 .bonuses-badge{
-  display:inline-block;background:rgba(220,38,38,0.2);border:1px solid #dc2626;
-  color:#dc2626;padding:6px 20px;border-radius:20px;font-size:14px;margin-bottom:16px
+  display:inline-block;background:rgba(230,57,80,0.1);border:1px solid var(--red-accent);
+  color:var(--red-accent);padding:6px 20px;border-radius:20px;font-size:14px;margin-bottom:16px
 }
-.bonuses-title{font-size:36px;font-weight:800;line-height:1.5}
-.bonuses-title .green{color:var(--green)}
+.bonuses-title{font-size:36px;font-weight:800;line-height:1.5;color:var(--dark-text)}
+.bonuses-title .rose{color:var(--rose-primary)}
 .bonuses-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1000px;margin:0 auto}
 .bonus-card{
-  background:var(--card-bg);border:1px solid rgba(255,255,255,0.1);
-  border-radius:16px;padding:24px;text-align:center
+  background:#fff;border:1px solid #f0c4d8;border-radius:16px;
+  padding:24px;text-align:center;box-shadow:0 2px 12px rgba(225,29,116,0.05)
 }
 .bonus-book{
   width:220px;height:280px;margin:0 auto 16px;
   border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center;
-  box-shadow:4px 4px 20px rgba(0,0,0,0.4)
+  box-shadow:4px 4px 20px rgba(0,0,0,0.3)
 }
-.bonus-book img{width:100%;height:100%;object-fit:cover}
-.bonus-card h4{font-size:18px;color:var(--yellow);margin-bottom:8px}
-.bonus-card p{font-size:14px;color:#ccc;margin-bottom:12px;line-height:1.7}
-.bonus-price{font-size:14px}.bonus-price .old{color:var(--red);text-decoration:line-through}.bonus-price .free{color:var(--green)}
+.bonus-book img{width:100%;height:100%;object-fit:contain}
+.bonus-card h4{font-size:18px;color:var(--rose-primary);margin-bottom:8px}
+.bonus-card p{font-size:14px;color:var(--gray-text);margin-bottom:12px;line-height:1.7}
+.bonus-price{font-size:14px}.bonus-price .old{color:var(--red-accent);text-decoration:line-through}.bonus-price .free{color:var(--rose-primary);font-weight:700}
 .bonuses-cta{text-align:center;margin-top:40px}
 
 /* ======== VALUE STACK ======== */
-.value-stack{background:#fff;color:#111}
-.value-stack-title{text-align:center;font-size:30px;margin-bottom:40px}
-.value-stack-title .green{color:#00a651;font-weight:800}
+.value-stack{background:#fff}
+.value-stack-title{text-align:center;font-size:30px;margin-bottom:40px;color:var(--dark-text)}
+.value-stack-title .rose{color:var(--rose-primary);font-weight:800}
 .value-bundle-img{
   max-width:600px;margin:0 auto 40px;border-radius:16px;overflow:hidden;text-align:center
 }
-.value-bundle-img img{width:100%}
-.value-card{max-width:700px;margin:0 auto;background:#fff;border:2px solid #e0e0e0;border-radius:20px;padding:40px}
-.value-card-header{text-align:center;font-size:22px;font-weight:700;margin-bottom:24px}
+.value-bundle-placeholder{
+  height:320px;background:#4a0b28;display:flex;align-items:center;
+  justify-content:center;border-radius:16px;color:rgba(255,255,255,0.6);font-size:16px
+}
+.value-card{max-width:700px;margin:0 auto;background:#fff;border:2px solid #f0c4d8;border-radius:20px;padding:40px}
+.value-card-header{text-align:center;font-size:22px;font-weight:700;margin-bottom:24px;color:var(--dark-text)}
 .value-items{display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
 .value-item{
-  background:#f0fff4;border:1.5px solid var(--green);border-radius:10px;
+  background:#fdf0f4;border:1.5px solid var(--rose-primary);border-radius:10px;
   padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px
 }
-.value-item-left{display:flex;align-items:flex-start;gap:10px;font-size:14px;font-weight:600}
-.value-item-check{color:var(--green);font-size:16px;flex-shrink:0}
-.value-badge{background:var(--green);color:#000;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700;white-space:nowrap}
-.value-divider{border:none;border-top:1px solid #e0e0e0;margin-bottom:24px}
-.value-old-price{text-align:center;font-size:16px;color:#999;text-decoration:line-through;margin-bottom:4px}
-.value-final-price{text-align:center;font-size:42px;font-weight:900;color:#111;margin-bottom:24px}
+.value-item-left{display:flex;align-items:flex-start;gap:10px;font-size:14px;font-weight:600;color:var(--dark-text)}
+.value-item-check{color:var(--rose-primary);font-size:16px;flex-shrink:0}
+.value-badge{background:var(--rose-primary);color:#fff;padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700;white-space:nowrap}
+.value-divider{border:none;border-top:1px solid #f0c4d8;margin-bottom:24px}
+.value-old-price{text-align:center;font-size:16px;color:var(--red-accent);text-decoration:line-through;margin-bottom:4px}
+.value-final-price{text-align:center;font-size:42px;font-weight:900;color:var(--dark-text);margin-bottom:24px}
+.value-cta-btn{text-align:center}
+
+/* ======== FAQ ======== */
+.faq{padding:60px 0}
+.faq-header{text-align:center;margin-bottom:32px}
+.faq-header h2{font-size:32px;color:var(--dark-text)}
+.faq-header h2 .rose{color:var(--rose-primary);font-weight:800}
+.faq-icon-circle{
+  display:inline-flex;width:36px;height:36px;border-radius:50%;
+  background:rgba(225,29,116,0.12);color:var(--rose-primary);align-items:center;
+  justify-content:center;font-size:18px;margin:0 8px;vertical-align:middle
+}
+.faq-sub{color:var(--gray-text);font-size:15px;text-align:center;margin-bottom:32px}
+.faq-list{max-width:700px;margin:0 auto;display:flex;flex-direction:column;gap:8px}
+.faq-row{background:#fff;border:1px solid #f0c4d8;border-radius:12px;overflow:hidden}
+.faq-question{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 24px;cursor:pointer;font-weight:700;font-size:16px;
+  transition:color .3s;user-select:none;color:var(--dark-text)
+}
+.faq-question:hover{color:var(--rose-primary)}
+.faq-chevron{font-size:18px;color:var(--gray-text);transition:transform .4s ease}
+.faq-row.open .faq-chevron{transform:rotate(180deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s ease}
+.faq-answer p{padding:0 24px 18px;font-size:14px;color:var(--gray-text);line-height:1.8}
+.faq-row.open .faq-answer{max-height:400px}
 
 /* ======== GUARANTEE ======== */
 .guarantee{padding:60px 0}
 .guarantee-card{
   max-width:600px;margin:0 auto;background:#fff;border-radius:24px;
-  padding:48px 40px;text-align:center;color:#111;box-shadow:0 20px 60px rgba(0,0,0,0.3)
+  padding:48px 40px;text-align:center;color:var(--dark-text);
+  box-shadow:0 20px 60px rgba(225,29,116,0.1);border:1px solid #f0c4d8
 }
-.guarantee-ribbon{
-  width:110px;height:110px;margin:0 auto 24px;background:#1e3a5f;
-  clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
-  display:flex;align-items:center;justify-content:center
-}
-.guarantee-ribbon-star{width:40px;height:40px;background:var(--yellow);border-radius:50%}
-.guarantee-card h2{font-size:30px;font-weight:800;color:#1a2942;line-height:1.3;margin-bottom:4px}
-.guarantee-card h3{font-size:20px;font-weight:700;margin-bottom:16px}
-.guarantee-card .g-text{font-size:15px;color:#666;max-width:480px;margin:0 auto 24px;line-height:1.7}
-.guarantee-card .g-email{color:var(--green);text-decoration:underline}
+.guarantee-card h2{font-size:30px;font-weight:800;color:var(--dark-text);line-height:1.3;margin-bottom:4px}
+.guarantee-card h3{font-size:20px;font-weight:700;margin-bottom:16px;color:var(--rose-primary)}
+.guarantee-card .g-text{font-size:15px;color:var(--gray-text);max-width:480px;margin:0 auto 24px;line-height:1.7}
+.guarantee-card .g-email{color:var(--rose-primary);text-decoration:underline}
 .guarantee-card .cta-btn{margin-bottom:16px}
-.guarantee-card .rating-text{color:#666!important}
 
-/* ======== FAQ ======== */
-.faq{padding:60px 0}
-.faq-header{text-align:center;margin-bottom:32px}
-.faq-header h2{font-size:32px}
-.faq-header h2 .teal{color:#2dd4bf;font-weight:800}
-.faq-icon-circle{
-  display:inline-flex;width:36px;height:36px;border-radius:50%;
-  background:rgba(45,212,191,0.2);color:#2dd4bf;align-items:center;
-  justify-content:center;font-size:18px;margin:0 8px;vertical-align:middle
+/* ======== COMPARISON -- ONLINE VS IN-PERSON ======== */
+.comparison{background:#fff;padding:60px 0}
+.comparison-header{text-align:center;margin-bottom:40px}
+.comparison-header h2{font-size:32px;font-weight:800;color:var(--dark-text)}
+.comparison-header h2 .rose{color:var(--rose-primary)}
+.comparison-header p{color:var(--gray-text);font-size:15px;margin-top:8px}
+.comparison-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:1000px;margin:0 auto;align-items:start}
+.comparison-card{
+background:#fff;border-radius:20px;
+box-shadow:0 4px 32px rgba(0,0,0,0.08);position:relative
 }
-.faq-sub{color:var(--gray);font-size:15px;text-align:center;margin-bottom:32px}
-.faq-list{max-width:700px;margin:0 auto;display:flex;flex-direction:column;gap:8px}
-.faq-row{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.15);border-radius:12px;overflow:hidden}
-.faq-question{
+.comparison-card--online{border:2px solid var(--rose-primary)}
+.comparison-card--offline{border:2px solid #e0c4d0}
+.comparison-card-badge{
+position:absolute;top:0;left:50%;transform:translate(-50%,-50%);
+background:var(--rose-primary);color:#fff;padding:6px 24px;
+border-radius:20px;font-size:13px;font-weight:700;white-space:nowrap;z-index:2
+}
+.comparison-card--offline .comparison-card-badge{background:var(--gray-text)}
+.comparison-card-top{
+padding:32px 28px 20px;text-align:center;
+border-bottom:1px solid #f0e0e8
+}
+.comparison-card-icon{font-size:40px;margin-bottom:8px}
+.comparison-card-top h3{font-size:22px;font-weight:800;color:var(--dark-text);margin-bottom:4px}
+.comparison-card-top .location{font-size:13px;color:var(--gray-text)}
+.comparison-card-features{padding:24px 28px}
+.comparison-card-features ul{display:flex;flex-direction:column;gap:12px}
+.comparison-card-features li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:#3d2c33;line-height:1.6}
+.comparison-check{color:var(--rose-primary);font-size:16px;flex-shrink:0;margin-top:2px}
+.comparison-card--offline .comparison-check{color:#8b6b7a}
+.comparison-card-bottom{
+padding:20px 28px 32px;text-align:center;
+border-top:1px solid #f0e0e8
+}
+.comparison-price-label{font-size:13px;color:var(--gray-text);margin-bottom:4px}
+.comparison-price{font-size:38px;font-weight:900;color:var(--rose-primary);margin-bottom:16px}
+.comparison-card--offline .comparison-price{color:#5a3a4a}
+.comparison-price .currency{font-size:20px;font-weight:600}
+.comparison-card .cta-btn{width:100%}
+.comparison-note{text-align:center;margin-top:32px;font-size:14px;color:var(--gray-text)}
+.comparison-note .rose{color:var(--rose-primary);font-weight:700}
+
+/* ======== UPSELL ======== */
+.upsell{background:linear-gradient(135deg,#fff0f3 0%,#ffe0e8 100%);padding:60px 0}
+.upsell-card{
+max-width:650px;margin:0 auto;background:#fff;
+border:2px dashed var(--rose-primary);border-radius:20px;
+padding:40px;text-align:center;
+box-shadow:0 8px 40px rgba(225,29,116,0.12)
+}
+.upsell-badge{
+display:inline-block;background:var(--rose-primary);color:#fff;
+padding:6px 20px;border-radius:20px;font-size:14px;font-weight:700;margin-bottom:20px
+}
+.upsell-card h3{font-size:24px;font-weight:800;color:var(--dark-text);margin-bottom:16px;line-height:1.5}
+.upsell-card h3 .rose{color:var(--rose-primary)}
+.upsell-card .upsell-desc{font-size:15px;color:var(--gray-text);margin-bottom:24px;line-height:1.7}
+.upsell-materials{
+  margin:0 auto 24px;padding:16px 18px;max-width:520px;text-align:right;
+  background:#fff7fa;border:1px solid #f0c4d8;border-radius:14px
+}
+.upsell-materials h4{font-size:16px;color:var(--dark-text);margin-bottom:10px}
+.upsell-materials ul{display:flex;flex-direction:column;gap:6px}
+.upsell-materials li{font-size:14px;color:var(--gray-text);line-height:1.7}
+.upsell-highlights{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-bottom:24px}
+.upsell-tag{
+background:rgba(225,29,116,0.08);border:1px solid rgba(225,29,116,0.2);
+padding:8px 16px;border-radius:20px;font-size:13px;color:var(--rose-dark);font-weight:600
+}
+.upsell-price-row{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:20px}
+.upsell-old-price{font-size:16px;color:var(--red-accent);text-decoration:line-through}
+.upsell-new-price{font-size:36px;font-weight:900;color:var(--rose-primary)}
+.upsell-promo-img{max-width:700px;margin:0 auto 32px;border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(225,29,116,0.15)}
+.upsell-promo-img img{width:100%;height:auto;display:block}
+.decoupage-curriculum{max-width:900px;margin:48px auto 0}
+.decoupage-curriculum-title{text-align:center;font-size:28px;font-weight:800;color:var(--dark-text);margin-bottom:8px}
+.decoupage-curriculum-title .rose{color:var(--rose-primary)}
+.decoupage-curriculum-sub{text-align:center;color:var(--gray-text);font-size:15px;margin-bottom:32px}
+.decoupage-chapters{display:flex;flex-direction:column;gap:20px}
+.decoupage-chapter{background:#fff;border:1px solid #f0c4d8;border-radius:16px;overflow:hidden}
+.decoupage-chapter-header{
   display:flex;align-items:center;justify-content:space-between;
-  padding:18px 24px;cursor:pointer;font-weight:700;font-size:16px;
-  transition:color .3s;user-select:none
+  padding:18px 24px;cursor:pointer;user-select:none;
+  background:var(--card-bg-light);transition:background .3s
 }
-.faq-question:hover{color:var(--green)}
-.faq-chevron{font-size:18px;color:var(--gray);transition:transform .4s ease}
-.faq-row.open .faq-chevron{transform:rotate(180deg)}
-.faq-answer{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s ease}
-.faq-answer p{padding:0 24px 18px;font-size:14px;color:var(--gray);line-height:1.8}
-.faq-row.open .faq-answer{max-height:300px}
+.decoupage-chapter-header:hover{background:#fce0ea}
+.decoupage-chapter-header h4{font-size:17px;font-weight:700;color:var(--dark-text)}
+.decoupage-chapter-header .lesson-count{font-size:13px;color:var(--gray-text);margin-top:2px}
+.decoupage-chapter-toggle{color:var(--rose-primary);font-size:20px;font-weight:700;transition:transform .4s ease;flex-shrink:0;margin-right:12px}
+.decoupage-chapter.open .decoupage-chapter-toggle{transform:rotate(180deg)}
+.decoupage-lessons-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+  max-height:0;overflow:hidden;transition:max-height .5s ease,padding .5s ease;
+  padding:0 20px
+}
+.decoupage-chapter.open .decoupage-lessons-grid{max-height:3000px;padding:20px}
+.decoupage-lesson-card{border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 2px 10px rgba(225,29,116,0.08)}
+.decoupage-lesson-card img{width:100%;height:auto;display:block}
+.decoupage-lesson-card p{font-size:12px;color:var(--gray-text);padding:8px 10px;line-height:1.5;text-align:center}
+
+/* ======== COMPARISON & UPSELL MOBILE ======== */
+@media(max-width:768px){
+.comparison-grid{grid-template-columns:1fr;max-width:450px}
+.upsell-card{padding:28px 20px}
+.upsell-card h3{font-size:20px}
+.decoupage-lessons-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+.decoupage-curriculum-title{font-size:22px}
+}
 
 /* ======== MOBILE ======== */
 @media(max-width:768px){
-  .hero-title{font-size:26px}.pricing-amount{font-size:42px}.pricing-card{padding:24px}
-  .experts-grid{grid-template-columns:1fr}
+  .hero-title{font-size:28px}
+  .pricing-amount{font-size:42px}
+  .pricing-card{padding:24px}
   .journey-item,.journey-item.rev{grid-template-columns:1fr}
-  .journey-photo{width:100%;height:200px}.journey-item.rev .journey-photo{order:0}
-  .success-grid{grid-template-columns:repeat(2,1fr)}.bonuses-grid{grid-template-columns:1fr}
+  .journey-photo{justify-self:center}.journey-item.rev .journey-photo{order:0}
+  .journey-photo img{max-width:100%;max-height:none}
+  .expert-avatar img{max-width:100%;max-height:none}
+  .success-row{flex-direction:column;align-items:center}
+  .bonuses-grid{grid-template-columns:1fr}
   .navbar-left{gap:6px}.timer-num{font-size:16px}.timer-colon{font-size:16px}
   .navbar .cta-btn{padding:8px 14px;font-size:13px}
   .timer-label{font-size:11px}
-  .carousel-viewport{margin:0 40px}.results-banner-text{font-size:26px}.results-title{font-size:22px}
   .guarantee-card{padding:32px 20px}.value-card{padding:24px 16px}.value-card-header{font-size:18px}
-  .chapter-banner{height:200px}.chapter-banner-text{font-size:24px}
+  .chapter-banner{height:200px}.chapter-banner-text{font-size:28px}
   .bonus-book{width:180px;height:240px}
+  .journey-graphic .jny{font-size:48px}
 }
 @media(max-width:480px){
   .navbar .container{flex-direction:row;gap:4px;padding:4px 8px}.navbar{height:auto;padding:6px 0}
   .navbar-left{flex-wrap:wrap;gap:4px;justify-content:center}
-  .success-grid{grid-template-columns:repeat(2,1fr);gap:8px}
   .hero-title{font-size:22px}
-  .vsl-wrapper{border-radius:8px}
+  .vsl-placeholder{height:300px}
+  .chapter-banner-text{font-size:22px}
+  .value-item{flex-direction:column;align-items:flex-start;gap:8px}
+  .value-badge{align-self:flex-end}
+  .decoupage-lessons-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -378,7 +488,7 @@ section{padding:60px 0}
         <div class="timer-block"><span class="timer-num" id="timer-seconds">00</span><span class="timer-num-label">ثانية</span></div>
       </div>
     </div>
-    <a href="https://wa.me/201037307014?text=عايزة%20أعرف%20تفاصيل%20الكورس" target="_blank" rel="noopener" class="cta-btn">اشتركي الآن</a>
+    <a href="checkout.html" class="cta-btn">اشتركي الآن</a>
   </div>
 </nav>
 
@@ -387,32 +497,20 @@ section{padding:60px 0}
   <div class="hero-content">
     <div class="hero-badge">🏠 كورس الطباعة على القماش من البيت</div>
     <h1 class="hero-title">
-      +2500 بنت بدأت <span class="green">الطباعة على القماش</span>… وحوّلتها<br>
-      لمصدر دخل من البيت في اقل من <span class="green">٣٠</span> يوم؟
+      +100 بنت بدأت <span class="rose">الطباعة على القماش</span>… وحوّلتها<br>
+      لمصدر دخل من البيت في اقل من <span class="rose">٣٠</span> يوم؟
     </h1>
-    <p class="hero-sub">حتى لو بتبدأي من الصفر ومعندكيش خبرة<br>بسيستم واحد… بيحوّل القماش العادي لمنتجات بتبيع</p>
+    <p class="hero-sub">حتى لو بتبدأي من الصفر ومعندكيش خبرة<br>بكورس واحد… بيحوّل القماش العادي لمنتجات بتبيع</p>
     <p class="hero-link-text">وهتكوني من البنات اللي بتكسب فعلاً من شغلها بأقل تكلفة</p>
     <p class="hero-video-label">🔊 شاهدي هذا الفيديو لتعرفي الخطوات</p>
   </div>
   <div class="vsl-wrapper">
-    <div class="vsl-iframe-wrap">
-      <iframe
-        src="https://www.youtube.com/embed/VIDEO_ID_HERE"
-        title="كورس الطباعة على القماش"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
-    </div>
+    <iframe src="https://www.youtube.com/embed/0wAYNdD6qf0" title="Dokkan Decor VSL" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%;aspect-ratio:16/9;border:0;border-radius:12px"></iframe>
   </div>
   <div class="hero-cta-wrap">
-    <a href="https://wa.me/201037307014?text=عايزة%20أعرف%20تفاصيل%20الكورس" target="_blank" rel="noopener" class="cta-btn cta-btn--lg">اشتركي الآن</a>
-    <div class="avatars-row">
-      <div class="avatar-circle"></div><div class="avatar-circle"></div><div class="avatar-circle"></div>
-      <div class="avatar-circle"></div><div class="avatar-circle"></div><div class="avatar-circle"></div>
-      <div class="avatar-circle"></div><div class="avatar-circle"></div>
-    </div>
+    <a href="checkout.html" class="cta-btn cta-btn--lg">اشتركي الآن</a>
     <p class="stars">⭐⭐⭐⭐⭐</p>
-    <p class="rating-text">حاصلة علي تقييم 4.9 من أكثر من 1600 + مشتركة</p>
+    <p class="rating-text">حاصلة علي تقييم 4.9 من +100 متدربة حضوري وأونلاين</p>
   </div>
 </section>
 
@@ -421,49 +519,37 @@ section{padding:60px 0}
   <div class="pricing-card">
     <div class="pricing-badge"><span class="pricing-badge-dot"></span> العرض الحالي</div>
     <h2 class="pricing-title">الخصم متاح لأول 100 بنت فقط</h2>
-    <p class="pricing-sub">السعر لأول 100 مشتركة: EGP2,950 — وبعدها يرجع السعر الطبيعي.</p>
+    <p class="pricing-sub">السعر لأول 100 مشتركة: EGP600 — وبعدها يرجع السعر الطبيعي.</p>
     <div class="pricing-inner">
       <p class="pricing-inner-label">السعر الحالي</p>
-      <p class="pricing-inner-warn">⏱ بعد اكتمال 100 بنت هيرجع السعر لـ EGP10,500</p>
-      <div class="pricing-amount">EGP2,950</div>
+      <p class="pricing-inner-warn">⏱ بعد اكتمال 100 بنت هيرجع السعر لـ EGP2,000</p>
+      <div class="pricing-amount">EGP600</div>
     </div>
     <div class="pricing-bar-row">
-      <span class="white">باقي 35</span>
+      <span class="dark">باقي 35</span>
       <span class="gray">اتسجل 65 / 100</span>
     </div>
     <div class="pricing-bar"><div class="pricing-bar-fill"></div></div>
-    <a href="https://wa.me/201037307014?text=عايزة%20أعرف%20تفاصيل%20الكورس" target="_blank" rel="noopener" class="cta-btn cta-btn--block cta-btn--xl">⚡ ⚡ لسه في أماكن… متأخريش.</a>
+    <a href="checkout.html" class="cta-btn cta-btn--block cta-btn--xl">⚡ ⚡ لسه في أماكن… متأخريش.</a>
   </div>
 </section>
 
-<!-- ========== TESTIMONIALS — real section images ========== -->
+<!-- ========== EXPERT TESTIMONIALS ========== -->
 <section class="experts">
   <div class="container">
-    <h2 class="experts-title">رأي <span class="green">المتدربات</span> بعد تجربتهم الكورس</h2>
+    <h2 class="experts-title">مشاريع<span class="rose"> المتدربات</span> اللى هيتم دراستها بالكورس الاونلاين</h2>
     <div class="experts-grid">
       <div class="expert-card">
-        <div class="expert-avatar"><img src="section1/photo_5879531841788776221_y.jpg" alt=""></div>
-        <p class="expert-name">نورا محمد</p>
-        <p class="expert-text">بداية أي خطوة في الطباعة على القماش بيبقى فيها خوف وتوهان، بس الكورس خلاني أفهم الخامات والأدوات من الأساس، وإزاي أطلع بمنتج بروفشنال. محتوى عملي مبني على خبرة حقيقية وأنصح بيه لأي بنت عايزة تبدأ صح</p>
-        <div class="expert-stars">⭐⭐⭐⭐</div>
+        <div class="expert-avatar"><img src="my_journey/11.jpeg" alt=""></div>
       </div>
       <div class="expert-card">
-        <div class="expert-avatar"><img src="section2/photo_5879531841788776225_y.jpg" alt=""></div>
-        <p class="expert-name">سمية أحمد</p>
-        <p class="expert-text">والله العظيم كمية المعلومات اللي شوفتها في الكورس دي اتعلمتها في سنين شغل. الكورس مبني على نتائج حقيقية وبنات بتعمل مبيعات فعلًا. قوي جدًا، مختلف عن أي حاجة في الوطن العربي، وهيأثر على طريقك ويخليك تعملي فلوس أسرع بكتير.</p>
-        <div class="expert-stars">⭐⭐⭐⭐⭐</div>
-      </div>
-      <div class="expert-card">
-        <div class="expert-avatar"><img src="section2/photo_5879531841788776228_y.jpg" alt=""></div>
-        <p class="expert-name">منى خالد</p>
-        <p class="expert-text">كصانعة محتوى بشتغل في مجال الهاند ميد، دايمًا العملاء بيدوروا على الحرفيين اللي عندهم شغل نظيف واحترافي. الكورس ده بيديك المعادلة اللي تخلي أي منتج يطلع بشكل بروفشنال من أول مرة. بصراحة ده أهم استثمار لازم تبدأي بيه.</p>
-        <div class="expert-stars">⭐⭐⭐⭐⭐</div>
+        <div class="expert-avatar"><img src="my_journey/22.jpeg" alt=""></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ========== JOURNEY — real section thumbnails ========== -->
+<!-- ========== JOURNEY TIMELINE ========== -->
 <section class="journey">
   <div class="container">
     <h2 class="journey-title">ازاي بدأت من البيت وبقيت أدرب آلاف البنات على الطباعة على القماش</h2>
@@ -473,28 +559,32 @@ section{padding:60px 0}
     </div>
     <div class="journey-list">
       <div class="journey-item">
-        <div><div class="journey-year">2020</div><p class="journey-text">بدأت في مجال الطباعة على القماش من البيت كهواية. اشتريت أول مكواة وبعض الخامات البسيطة وجربت على تيشرتات قديمة. اكتشفت إني بحب المجال ده جدًا.</p></div>
-        <div class="journey-photo"><img src="section1/photo_5879531841788776220_y.jpg" alt="2020"></div>
+        <div><div class="journey-year">2010</div><p class="journey-text">تخرجت من صيدلة عين شمس وبدأت شغلي في المستشفيات.. دقة الصيدلانية كانت دايماً معايا، بس شغفي بالفن كان مستني الفرصة.</p></div>
+        <div class="journey-photo"><img src="my_journey/1.jpeg" alt="2010"></div>
       </div>
       <div class="journey-item rev">
-        <div><div class="journey-year">2021</div><p class="journey-text">بدأت أبيع أول منتجاتي للأصدقاء والعيلة. تعلمت تقنيات DTF والمعجون والفنيل. بدأت صفحة على فيسبوك وإنستغرام أعرض فيها شغلي.</p></div>
-        <div class="journey-photo"><img src="section1/photo_5879531841788776221_y.jpg" alt="2021"></div>
+        <div><div class="journey-year">2010 – 2018</div><p class="journey-text">استمرت رحلتي في الصيدليات 8 سنوات، لكن شغفي بالفنون  كان لسه مستنيني يرجع من جديد</p></div>
+        <div class="journey-photo"><img src="my_journey/2.jpeg" alt="2010 – 2018"></div>
       </div>
       <div class="journey-item">
-        <div><div class="journey-year">2022</div><p class="journey-text">كبرت شغلي وبدأت أوصل لمبيعات شهرية ثابتة. اشتريت خامات أكتر وطورت تقنياتي في الطباعة والصباغة. بقيت أتعرف في السوق كواحدة من المحترفات في المجال.</p></div>
-        <div class="journey-photo"><img src="section1/photo_5879531841788776222_y.jpg" alt="2022"></div>
+        <div><div class="journey-year">2018</div><p class="journey-text">قررت أرجع لشغفي، اتدربت على يد أشهر المدربين، وشاركت بأعمالي في برامج تلفزيونية.. وتحولت الهوايه لحب ومنها لشغل ومصدر دخل.</p></div>
+        <div class="journey-photo"><img src="my_journey/3.jpeg" alt="2018"></div>
       </div>
       <div class="journey-item rev">
-        <div><div class="journey-year">2023</div><p class="journey-text">بدأت أدرب بنات تانية على اللي اتعلمته. عملت أول ورشة عمل لتعليم الطباعة على القماش، والبنات طلبوا مني كورس متكامل يغطي كل حاجة من الخامات لحد التسعير.</p></div>
-        <div class="journey-photo"><img src="section1/photo_5879531841788776223_y.jpg" alt="2023"></div>
+        <div><div class="journey-year">2020</div><p class="journey-text">مع كورونا وولادة توأمي، بدأت أتعلم أونلاين من البيت.. وعرفت إن مسؤوليات البيت والأولاد مش عائق أمام أي ست عايزة تنجح.</p></div>
+        <div class="journey-photo"><img src="my_journey/4.jpeg" alt="2020"></div>
       </div>
       <div class="journey-item">
-        <div><div class="journey-year">2024</div><p class="journey-text">الحمد لله أطلقت كورس Dokkan Decor. الكورس الكامل لتعليم الطباعة على القماش من البيت بكل محاوره: الخامات، العملي، الذكاء الاصطناعي، الصباغة، والتسعير — كل حاجة في كورس واحد متكامل.</p></div>
-        <div class="journey-photo"><img src="section2/photo_5879531841788776224_y.jpg" alt="2024"></div>
+        <div><div class="journey-year">2021</div><p class="journey-text">أسست قنواتي على اليوتيوب والانستجرام لتبسيط الفنون.. والحمد لله مجتمعي كبر ووصل لأكتر من 23 ألف متابعة.</p></div>
+        <div class="journey-photo"><img src="my_journey/5.jpeg" alt="2021"></div>
       </div>
       <div class="journey-item rev">
-        <div><div class="journey-year">2025</div><p class="journey-text">الحمد لله أكثر من 2500 بنة اشتركت في الكورس وبدأوا مشاريعهم من البيت. بنات كتير بقت تكسب دخل شهري من الطباعة على القماش، والنتائج بقت تظهر كل يوم.</p></div>
-        <div class="journey-photo"><img src="section2/photo_5879531841788776226_y.jpg" alt="2025"></div>
+        <div><div class="journey-year">2023</div><p class="journey-text">بدأت أول ورش حضورية لتعليم الديكوباج والطباعة على القماش وتجديد الأثاث، وساعدت عشرات السيدات يكتشفوا موهبتهم و يستثمروا وقتهم و يقضوا وقت ممتع.</p></div>
+        <div class="journey-photo"><img src="my_journey/6.jpeg" alt="2023"></div>
+      </div>
+      <div class="journey-item">
+        <div><div class="journey-year">2026</div><p class="journey-text">والنهاردة، بنقلِك خلاصة سنين من الخبرة والتجارب في كورس "أسرار الطباعة على القماش في البيت" عشان تبدأي خطوتكِ بثقة وسهولة. هدفي أن أساعد كل أم وكل سيدة على تجديد ملابسها وديكورات بيتها بنفسها، أو تكتسب مهارة تبدأ بها مشروع صغير يحقق لها دخل إضافي واستقلال أكبر.</p></div>
+        <div class="journey-photo"><img src="my_journey/7.jpeg" alt="2026"></div>
       </div>
     </div>
   </div>
@@ -502,42 +592,81 @@ section{padding:60px 0}
 
 <!-- ========== CTA STRIP ========== -->
 <section class="cta-strip">
-  <a href="https://wa.me/201037307014?text=عايزة%20أعرف%20تفاصيل%20الكورس" target="_blank" rel="noopener" class="cta-btn cta-btn--lg">اشتركي الآن</a>
-  <div class="avatars-row" style="margin-top:16px">
-    <div class="avatar-circle"></div><div class="avatar-circle"></div><div class="avatar-circle"></div>
-    <div class="avatar-circle"></div><div class="avatar-circle"></div><div class="avatar-circle"></div>
-    <div class="avatar-circle"></div><div class="avatar-circle"></div>
-  </div>
+  <a href="checkout.html" class="cta-btn cta-btn--lg">اشتركي الآن</a>
   <p class="stars">⭐⭐⭐⭐⭐</p>
-  <p class="rating-text">حاصلة علي تقييم 4.9 من أكثر من 1600 + مشتركة</p>
+  <p class="rating-text">حاصلة علي تقييم 4.9 من +100 متدربة حضوري وأونلاين</p>
 </section>
 
-<!-- ========== SUCCESS STORIES — section2/section3 thumbnails ========== -->
+<!-- ========== SUCCESS STORIES — 2 CARDS ONLY ========== -->
 <section class="success">
   <div class="container">
-    <h2 class="success-title">قصص نجاح بناتنا بعد <span class="green">كورس الطباعة على القماش</span></h2>
+    <h2 class="success-title">قصص نجاح بناتنا بعد <span class="rose">كورس الطباعة على القماش</span></h2>
     <p class="success-sub">شاهدي كيف استطاعت المتدربات تحقيق نتائج استثنائية وبناء مشروع طباعة مربح من البيت في وقت قياسي من خلال تطبيق ما تعلموه في الكورس.</p>
-    <div class="success-grid">
-      <div class="success-card" style="aspect-ratio:9/16;background:#000"><iframe src="https://www.youtube.com/embed/uhW31HShyMk" title="قصص النجاح ١" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%;height:100%;border:0;position:absolute;top:0;left:0"></iframe></div>
-      <div class="success-card" style="aspect-ratio:9/16;background:#000"><iframe src="https://www.youtube.com/embed/uhW31HShyMk" title="قصص النجاح ٢" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%;height:100%;border:0;position:absolute;top:0;left:0"></iframe></div>
-      <div class="success-card" style="aspect-ratio:9/16;background:#000"><iframe src="https://www.youtube.com/embed/uhW31HShyMk" title="قصص النجاح ٣" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%;height:100%;border:0;position:absolute;top:0;left:0"></iframe></div>
-      <div class="success-card" style="aspect-ratio:9/16;background:#000"><iframe src="https://www.youtube.com/embed/uhW31HShyMk" title="قصص النجاح ٤" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%;height:100%;border:0;position:absolute;top:0;left:0"></iframe></div>
-      <div class="success-card" style="aspect-ratio:9/16;background:#000"><iframe src="https://www.youtube.com/embed/uhW31HShyMk" title="قصص النجاح ٥" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%;height:100%;border:0;position:absolute;top:0;left:0"></iframe></div>
-      <div class="success-card" style="aspect-ratio:9/16;background:#000"><iframe src="https://www.youtube.com/embed/uhW31HShyMk" title="قصص النجاح ٦" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%;height:100%;border:0;position:absolute;top:0;left:0"></iframe></div>
+    <div class="success-row">
+      <div class="success-card">
+        <div class="success-video-wrap">
+          <iframe src="https://www.youtube.com/embed/uhW31HShyMk" title="قصة نجاح ١" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%;height:100%;border:0;position:absolute;top:0;left:0"></iframe>
+        </div>
+      </div>
+      <div class="success-card">
+        <div class="success-video-wrap">
+          <iframe src="https://www.youtube.com/embed/1P_o43OMbbY" title="قصة نجاح ٢" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%;height:100%;border:0;position:absolute;top:0;left:0"></iframe>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ========== CURRICULUM — 5 chapters with real cover images ========== -->
+<!-- ========== TESTIMONIALS — 4 REVIEW IMAGES ========== -->
+<section class="testimonials">
+  <div class="container">
+    <h2 class="testimonials-title">آراء <span class="rose">المتدربات</span> الأونلاين</h2>
+    <p class="testimonials-sub">شوفي تجارب البنات اللي سبقوكي في الكورس — تقييمات وشهادات حقيقية</p>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <img src="rev/WhatsApp Image 2026-06-26 at 1.41.52 PM.jpeg" alt="تقييم متدربة 1">
+      </div>
+      <div class="testimonial-card">
+        <img src="rev/WhatsApp Image 2026-06-26 at 1.41.53 PM.jpeg" alt="تقييم متدربة 2">
+      </div>
+      <div class="testimonial-card">
+        <img src="rev/WhatsApp Image 2026-06-26 at 1.41.53 PM (1).jpeg" alt="تقييم متدربة 3">
+      </div>
+      <div class="testimonial-card">
+        <img src="rev/WhatsApp Image 2026-06-26 at 1.41.53 PM (2).jpeg" alt="تقييم متدربة 4">
+      </div>
+      <div class="testimonial-card">
+        <img src="rev/WhatsApp Image 2026-06-26 at 10.47.18 PM.jpeg" alt="تقييم متدربة 5">
+      </div>
+      <div class="testimonial-card">
+        <img src="rev/WhatsApp Image 2026-06-26 at 10.55.57 PM.jpeg" alt="تقييم متدربة 6">
+      </div>
+      <div class="testimonial-card">
+        <img src="rev/WhatsApp Image 2026-06-26 at 10.56.54 PM.jpeg" alt="تقييم متدربة 7">
+      </div>
+      <div class="testimonial-card">
+        <img src="rev/WhatsApp Image 2026-06-26 at 11.03.10 PM.jpeg" alt="تقييم متدربة 8">
+      </div>
+      <div class="testimonial-card">
+        <img src="rev/WhatsApp Image 2026-06-26 at 11.03.23 PM.jpeg" alt="تقييم متدربة 9">
+      </div>
+      <div class="testimonial-card">
+        <img src="rev/WhatsApp Image 2026-06-27 at 5.47.17 PM.jpeg" alt="تقييم متدربة 10">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CURRICULUM — 5 CHAPTERS ========== -->
 <section class="curriculum">
   <div class="container">
     <div class="curriculum-header">
-      <h2>محتوى <span class="green">الكورس</span></h2>
+      <h2>محتوى <span class="rose">الكورس</span></h2>
       <p class="curriculum-sub">منهج متكامل خطوة بخطوة لتعليم الطباعة على القماش من البيت — 5 محاور</p>
     </div>
     <div class="chapter-blocks">
 
-      <!-- المحور الأول — section1 cover -->
+      <!-- المحور الأول -->
       <div class="chapter">
         <div class="chapter-banner">
           <img src="section1/photo_5879531841788776219_y.jpg" alt="المحور الأول">
@@ -545,7 +674,7 @@ section{padding:60px 0}
         </div>
         <div class="chapter-strip">
           <h3>خامات وأدوات الطباعة على القماش من البيت ( ٥ دروس )</h3>
-          <div class="chapter-toggle" onclick="toggleChapter(this)">عرض الدروس <span class="arrow">∨</span></div>
+          <div class="chapter-toggle" onclick="toggleChapter(this)">عرض الدروس <span class="arrow">٥</span></div>
         </div>
         <div class="lessons-list">
           <ol>
@@ -558,15 +687,15 @@ section{padding:60px 0}
         </div>
       </div>
 
-      <!-- المحور الثاني — section2 cover -->
+      <!-- المحور الثاني - العملي -->
       <div class="chapter">
         <div class="chapter-banner">
           <img src="section2/photo_5879531841788776224_y.jpg" alt="المحور الثاني">
           <span class="chapter-badge">المحور الثاني - العملي</span>
         </div>
         <div class="chapter-strip">
-          <h3>طباعة التيشرتات والشنط في البيت ب٣ جنيه وفي دقايق ( ٦ دروس )</h3>
-          <div class="chapter-toggle" onclick="toggleChapter(this)">عرض الدروس <span class="arrow">∨</span></div>
+          <h3>طباعة التيشرتات والشنط في البيت ب ٣٠ جنيه وفي دقايق ( ٦ دروس )</h3>
+          <div class="chapter-toggle" onclick="toggleChapter(this)">عرض الدروس <span class="arrow">٦</span></div>
         </div>
         <div class="lessons-list">
           <ol>
@@ -580,7 +709,7 @@ section{padding:60px 0}
         </div>
       </div>
 
-      <!-- المحور الثالث — section3 cover -->
+      <!-- المحور الثالث - التقني -->
       <div class="chapter">
         <div class="chapter-banner">
           <img src="section3/photo_5879531841788776230_y.jpg" alt="المحور الثالث">
@@ -603,7 +732,7 @@ section{padding:60px 0}
         </div>
       </div>
 
-      <!-- المحور الرابع — section4 cover -->
+      <!-- المحور الرابع -->
       <div class="chapter">
         <div class="chapter-banner">
           <img src="section4/photo_5879531841788776237_y.jpg" alt="المحور الرابع">
@@ -611,7 +740,7 @@ section{padding:60px 0}
         </div>
         <div class="chapter-strip">
           <h3>صباغة الأقمشة في البيت — طريقة سهلة وبسيطة</h3>
-          <div class="chapter-toggle" onclick="toggleChapter(this)">عرض الدرس <span class="arrow">∨</span></div>
+          <div class="chapter-toggle" onclick="toggleChapter(this)">عرض الدرس <span class="arrow"></span></div>
         </div>
         <div class="lessons-list">
           <ol>
@@ -623,7 +752,7 @@ section{padding:60px 0}
         </div>
       </div>
 
-      <!-- المحور الخامس — section5 cover -->
+      <!-- المحور الخامس -->
       <div class="chapter">
         <div class="chapter-banner">
           <img src="section5/photo_5879531841788776238_y.jpg" alt="المحور الخامس">
@@ -631,7 +760,7 @@ section{padding:60px 0}
         </div>
         <div class="chapter-strip">
           <h3>تسعير الشنط والتيشرتات — طريقة سهلة وعادلة</h3>
-          <div class="chapter-toggle" onclick="toggleChapter(this)">عرض الدرس <span class="arrow">∨</span></div>
+          <div class="chapter-toggle" onclick="toggleChapter(this)">عرض الدرس <span class="arrow"></span></div>
         </div>
         <div class="lessons-list">
           <ol>
@@ -645,104 +774,165 @@ section{padding:60px 0}
 
     </div>
     <div class="curriculum-cta">
-      <a href="https://wa.me/201037307014?text=عايزة%20أعرف%20تفاصيل%20الكورس" target="_blank" rel="noopener" class="cta-btn cta-btn--lg">اشتركي الآن</a>
-      <div class="avatars-row" style="margin-top:16px">
-        <div class="avatar-circle"></div><div class="avatar-circle"></div><div class="avatar-circle"></div>
-        <div class="avatar-circle"></div><div class="avatar-circle"></div><div class="avatar-circle"></div>
-        <div class="avatar-circle"></div><div class="avatar-circle"></div>
-      </div>
+      <a href="checkout.html" class="cta-btn cta-btn--lg">اشتركي الآن</a>
       <p class="stars">⭐⭐⭐⭐⭐</p>
-      <p class="rating-text">حاصلة علي تقييم 4.9 من أكثر من 1600 + مشتركة</p>
+      <p class="rating-text">حاصلة علي تقييم 4.9 من +100 متدربة حضوري وأونلاين</p>
     </div>
   </div>
 </section>
 
-<!-- ========== BONUSES — 3 GIFTS with real gift images ========== -->
+<!-- ========== BONUSES — 3 GIFTS ========== -->
 <section class="bonuses">
   <div class="container">
     <div class="bonuses-header">
       <div class="bonuses-badge">★ لسه مترددة؟</div>
-      <h2 class="bonuses-title">هدايا مجانية بقيمة $30 تحصل<br>عليها <span class="green">مجانًا</span></h2>
+      <h2 class="bonuses-title">هدايا مجانية بقيمة $30 تحصل<br>عليها <span class="rose">مجانًا</span></h2>
     </div>
     <div class="bonuses-grid">
-      <!-- Gift 1 — WhatsApp Group -->
+
       <div class="bonus-card">
         <div class="bonus-book"><img src="gift/photo_5879531841788776264_y.jpg" alt="جروب متابعة واتساب"></div>
         <h4>جروب متابعة واتساب</h4>
         <p>هتنضمي لجروب خاص بالمشتركات، كله بنات زيك عندهم نفس الهدف والطموح. متابعة مستمرة، تصحيح شغلك، إجابة على أسئلتك في أي وقت، وتحديثات ونصائح مستمرة. هتكوني مش بس متعلمة… هتكوني جزء من مجتمع داعم بيتطور مع بعض!</p>
         <p class="bonus-price"><span class="old">$10</span> → <span class="free">مجانًا</span></p>
       </div>
-      <!-- Gift 2 — Lifetime Access -->
+
       <div class="bonus-card">
         <div class="bonus-book"><img src="gift/photo_5879531841788776265_y.jpg" alt="وصول مدى الحياة"></div>
         <h4>وصول مدى الحياة للكورس</h4>
         <p>اشتراك مدى الحياة — مشترك لمرة واحدة ولا تجديد سنوي. تعلمي في وقتك اللي يناسبك، وكل التحديثات الجديدة هتوصلك. كل الدروس والمحتويات في متناولك دائمًا. لا حدود… لا تجديدات… الوصول دائم. ادفعي مرة واحدة وتحصل على كل ما تحتاجيه إلى الأبد!</p>
         <p class="bonus-price"><span class="old">$10</span> → <span class="free">مجانًا</span></p>
       </div>
-      <!-- Gift 3 — Suppliers PDF -->
+
       <div class="bonus-card">
         <div class="bonus-book"><img src="gift/photo_5879531841788776266_y.jpg" alt="موردين خامات"></div>
         <h4>قائمة موردين الخامات</h4>
         <p>هتحصلي على قائمة بها موردين وصفحات بيع الخامات بأحسن جودة وأقل سعر. مش هتحتاري ولا تضيعي فلوسك على خامات غالية أو رديئة. كل الموردين الموثوقين في مكان واحد — الملف ده سعره $10 لكن هتحصل عليه مجانًا!</p>
         <p class="bonus-price"><span class="old">$10</span> → <span class="free">مجانًا</span></p>
       </div>
+
     </div>
     <div class="bonuses-cta">
-      <a href="https://wa.me/201037307014?text=عايزة%20أعرف%20تفاصيل%20الكورس" target="_blank" rel="noopener" class="cta-btn cta-btn--lg">اشتركي الآن</a>
+      <a href="checkout.html" class="cta-btn cta-btn--lg">اشتركي الآن</a>
     </div>
   </div>
 </section>
 
-<!-- ========== VALUE STACK — section3 image as bundle ========== -->
+<!-- ========== VALUE STACK — EVERYTHING YOU GET ========== -->
 <section class="value-stack">
   <div class="container">
-    <h2 class="value-stack-title">كل ما ستحصلين عليه داخل <span class="green">كورس الطباعة على القماش</span></h2>
+    <h2 class="value-stack-title">كل ما ستحصلين عليه داخل <span class="rose">كورس الطباعة على القماش</span></h2>
     <div class="value-bundle-img">
-      <img src="section3/photo_5879531841788776230_y.jpg" alt="الباقة الكاملة">
+      <img src="my_journey/WhatsApp Image 2026-06-25 at 7.58.53 PM.jpeg" alt="الباقة الكاملة" style="width:100%;max-width:600px;border-radius:16px">
     </div>
     <div class="value-card">
       <p class="value-card-header">🎁 محتويات الباقة</p>
       <div class="value-items">
         <div class="value-item">
           <div class="value-item-left"><span class="value-item-check">✅</span><span><strong>المحور الأول — الخامات والأدوات:</strong> كل ما تحتاجينه لبدء الطباعة على القماش من البيت (٥ دروس).</span></div>
-          <span class="value-badge">💰 $97 مجانًا</span>
         </div>
         <div class="value-item">
           <div class="value-item-left"><span class="value-item-check">✅</span><span><strong>المحور الثاني — العملي:</strong> طباعة التيشرتات والشنط بـ ٣ جنيه وفي دقايق (٦ دروس عملية).</span></div>
-          <span class="value-badge">💰 $97 مجانًا</span>
         </div>
         <div class="value-item">
           <div class="value-item-left"><span class="value-item-check">✅</span><span><strong>المحور الثالث — التقني:</strong> استخدام الذكاء الاصطناعي والموبايل لتحسين منتجك وبيعه (٧ دروس).</span></div>
-          <span class="value-badge">💰 $97 مجانًا</span>
         </div>
         <div class="value-item">
           <div class="value-item-left"><span class="value-item-check">✅</span><span><strong>المحور الرابع — الصباغة:</strong> طريقة صباغة الأقمشة بطريقة سهلة في البيت.</span></div>
-          <span class="value-badge">💰 $47 مجانًا</span>
         </div>
         <div class="value-item">
           <div class="value-item-left"><span class="value-item-check">✅</span><span><strong>المحور الخامس — التسعير:</strong> طريقة سهلة وعادلة لتسعير الشنط والتيشرتات.</span></div>
-          <span class="value-badge">💰 $47 مجانًا</span>
         </div>
         <div class="value-item">
           <div class="value-item-left"><span class="value-item-check">✅</span><span><strong>جروب متابعة واتساب:</strong> متابعة مستمرة، تصحيح شغلك، إجابة على أسئلتك، تحديثات ونصائح ($10).</span></div>
-          <span class="value-badge">💰 $10 مجانًا</span>
         </div>
         <div class="value-item">
           <div class="value-item-left"><span class="value-item-check">✅</span><span><strong>وصول مدى الحياة:</strong> اشتراك مرة واحدة، كل التحديثات الجديدة، تعلمي في الوقت المناسب لك ($10).</span></div>
-          <span class="value-badge">💰 $10 مجانًا</span>
         </div>
         <div class="value-item">
           <div class="value-item-left"><span class="value-item-check">✅</span><span><strong>ملف موردين الخامات:</strong> قائمة بموردين وصفحات بيع الخامات بأحسن جودة وأقل سعر ($10).</span></div>
-          <span class="value-badge">💰 $10 مجانًا</span>
         </div>
       </div>
       <hr class="value-divider">
-      <p class="value-old-price">10,500 جنيه</p>
-      <p class="value-final-price">2950 جنية فقط</p>
+      <p class="value-old-price">2,000 جنيه</p>
+      <p class="value-final-price">600 جنية فقط</p>
       <div class="value-cta-btn">
-        <a href="https://wa.me/201037307014?text=عايزة%20أعرف%20تفاصيل%20الكورس" target="_blank" rel="noopener" class="cta-btn cta-btn--block cta-btn--lg">اشتركي الآن</a>
+        <a href="checkout.html" class="cta-btn cta-btn--block cta-btn--lg">اشتركي الآن</a>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ========== COMPARISON — ONLINE VS IN-PERSON ========== -->
+<section class="comparison">
+  <div class="container">
+    <div class="comparison-header">
+      <h2>اختاري <span class="rose">الطريقة</span> المناسبة ليكي</h2>
+      <p>قارني بين الكورس الأونلاين والورشة الحضورية واختاري الأنسبلك</p>
+    </div>
+    <div class="comparison-grid">
+
+      <!-- Online -->
+      <div class="comparison-card comparison-card--online">
+        <div class="comparison-card-badge">موصى به</div>
+        <div class="comparison-card-top">
+          <div class="comparison-card-icon">💻</div>
+          <h3>الطباعة على القماش — أونلاين</h3>
+          <p class="location">من أي مكان في مصر أو خارجها</p>
+        </div>
+        <div class="comparison-card-features">
+          <ul>
+            <li><span class="comparison-check">✅</span> فيديوهات مرتبة خطوة بخطوة مع إمكانية الرجوع إليها في أي وقت.</li>
+            <li><span class="comparison-check">✅</span> متاح من أي مكان داخل مصر أو خارجها.</li>
+            <li><span class="comparison-check">✅</span> توفير وقت ومصاريف الانتقال.</li>
+            <li><span class="comparison-check">✅</span> شرح التسعير وحساب تكلفة المنتج وتحديد سعر البيع المناسب.</li>
+            <li><span class="comparison-check">✅</span> شرح تصوير المنتجات بالموبايل وإخراج صور احترافية.</li>
+            <li><span class="comparison-check">✅</span> ملف يحتوي على أكثر من 100 صورة HD جاهزة للطباعة.</li>
+            <li><span class="comparison-check">✅</span> ملفات ومراجع للموردين تساعدك في شراء الخامات بسهولة.</li>
+            <li><span class="comparison-check">✅</span> تعلم 8 مشاريع متنوعة من البداية للنهاية.</li>
+            <li><span class="comparison-check">✅</span> تعلم أكثر من 6 تقنيات مختلفة للطباعة على القماش.</li>
+            <li><span class="comparison-check">✅</span> دعم ومتابعة للإجابة على أسئلتك أثناء التطبيق.</li>
+          </ul>
+        </div>
+        <div class="comparison-card-bottom">
+          <p class="comparison-price-label">سعر الكورس</p>
+          <p class="comparison-price">600 <span class="currency">جنيه فقط</span></p>
+          <a href="checkout.html" class="cta-btn">اشتركي الآن</a>
+        </div>
+      </div>
+
+      <!-- In-Person -->
+      <div class="comparison-card comparison-card--offline">
+        <div class="comparison-card-badge">حضوري</div>
+        <div class="comparison-card-top">
+          <div class="comparison-card-icon">🧑‍🏫</div>
+          <h3>الطباعة على القماش — حضوري</h3>
+          <p class="location">مدينة نصر</p>
+        </div>
+        <div class="comparison-card-features">
+          <ul>
+            <li><span class="comparison-check">✅</span> تطبيق عملي مباشر مع المدربة خطوة بخطوة.</li>
+            <li><span class="comparison-check">✅</span> تعلم الطباعة الحرارية على القماش عمليًا.</li>
+            <li><span class="comparison-check">✅</span> تعلم الطباعة بمعجون بديل التطريز للحصول على تأثير بارز ومميز.</li>
+            <li><span class="comparison-check">✅</span> التعرف على الخامات والأدوات المناسبة واستخدامها بشكل صحيح.</li>
+            <li><span class="comparison-check">✅</span> التفاعل المباشر وطرح الأسئلة أثناء الشرح.</li>
+            <li><span class="comparison-check">✅</span> تصحيح الأخطاء أولاً بأول أثناء التنفيذ.</li>
+            <li><span class="comparison-check">✅</span> تغيير جو والخروج من الروتين اليومي.</li>
+            <li><span class="comparison-check">✅</span> التعرف على أشخاص لديهم نفس الاهتمام بالفنون والأعمال اليدوية.</li>
+            <li><span class="comparison-check">✅</span> تنفيذ مشروعك بنفسك داخل الورشة.</li>
+            <li><span class="comparison-check">✅</span> جميع الخامات والأدوات متوفرة وجاهزة للاستخدام.</li>
+            <li><span class="comparison-check">✅</span> دعم ومتابعة للإجابة على الأسئلة بعد الورشة.</li>
+          </ul>
+        </div>
+        <div class="comparison-card-bottom">
+          <p class="comparison-price-label">سعر الورشة</p>
+          <p class="comparison-price">650 <span class="currency">جنيه شامل الخامات والأدوات</span></p>
+          <a href="checkout.html" class="cta-btn">اشتركي الآن</a>
+        </div>
+      </div>
+
+    </div>
+    <p class="comparison-note">✨ الكورس <span class="rose">الأونلاين</span> هو الخيار الموصى به — محتوى اكبر، وسعر أقل، وترجعيله في أي وقت</p>
   </div>
 </section>
 
@@ -750,22 +940,16 @@ section{padding:60px 0}
 <section class="guarantee">
   <div class="container">
     <div class="guarantee-card">
-      <div class="guarantee-ribbon"><div class="guarantee-ribbon-star"></div></div>
       <h2>ضمان استرجاع<br>المال</h2>
       <h3>ضمان استرجاع المال</h3>
       <p class="g-text">
         استرجاع كامل للفلوس لو المعلومات اللي موجودة في الكورس مش هتقدر تخليك تطبعي على القماش وتبيعي منتجاتك،
-        ببساطة ابعتيلنا ايميل خلال 7 أيام على <a href="mailto:support@dokkan-decor.com" class="g-email">support@dokkan-decor.com</a>،
+        ببساطة ابعتيلنا على واتساب خلال 7 أيام على <a href="https://wa.me/message/E364S4EJTY4MF1" target="_blank" rel="noopener" class="g-email">رقم الواتساب</a>،
         وهنرجعلك فلوسك بالكامل بدون أي أسئلة.
       </p>
-      <a href="https://wa.me/201037307014?text=عايزة%20أعرف%20تفاصيل%20الكورس" target="_blank" rel="noopener" class="cta-btn">اشتركي الآن</a>
-      <div class="avatars-row" style="margin-top:16px">
-        <div class="avatar-circle"></div><div class="avatar-circle"></div><div class="avatar-circle"></div>
-        <div class="avatar-circle"></div><div class="avatar-circle"></div><div class="avatar-circle"></div>
-        <div class="avatar-circle"></div><div class="avatar-circle"></div>
-      </div>
+      <a href="checkout.html" class="cta-btn">اشتركي الآن</a>
       <p class="stars">⭐⭐⭐⭐⭐</p>
-      <p class="rating-text">حاصلة علي تقييم 4.9 من أكثر من 1600 + مشتركة</p>
+      <p class="rating-text">حاصلة علي تقييم 4.9 من +100 متدربة حضوري وأونلاين</p>
     </div>
   </div>
 </section>
@@ -774,7 +958,7 @@ section{padding:60px 0}
 <section class="faq">
   <div class="container">
     <div class="faq-header">
-      <h2>الاسئلة <span class="faq-icon-circle">❓</span> <span class="teal">الشائعة</span></h2>
+      <h2>الاسئلة <span class="faq-icon-circle">❓</span> <span class="rose">الشائعة</span></h2>
       <p class="faq-sub">كل ما تحتاجي معرفته عن كورس الطباعة على القماش</p>
     </div>
     <div class="faq-list">
@@ -796,7 +980,198 @@ section{padding:60px 0}
       </div>
       <div class="faq-row">
         <div class="faq-question" onclick="toggleFaq(this)">هل أقدر أسترد فلوسي لو معجبنيش الكورس؟<span class="faq-chevron">∨</span></div>
-        <div class="faq-answer"><p>نعم! ضمان استرجاع كامل للمبلغ خلال 7 أيام من تاريخ الشراء. فقط ابعتيلنا ايميل على support@dokkan-decor.com وهنرجعلك فلوسك بالكامل بدون أي أسئلة.</p></div>
+        <div class="faq-answer"><p>نعم! ضمان استرجاع كامل للمبلغ خلال 7 أيام من تاريخ الشراء. فقط ابعتيلنا على الرقم ده : 01124567890 وهنرجعلك فلوسك بالكامل بدون أي أسئلة.</p></div>
+      </div>
+      <div class="faq-row">
+        <div class="faq-question" onclick="toggleFaq(this)">هجيب الخامات منين و بكام؟<span class="faq-chevron">∨</span></div>
+        <div class="faq-answer"><p>فى الكورس بتخدى لسته بأسماء المطابع و الموردين باحسن جوده . وتقدرى تبدائى مشروعك باقل من ٢٠٠ جنيه تعملى بيهم ٩ قطع قماش (تيشرت او شنطه)</p></div>
+      </div>
+      <div class="faq-row">
+        <div class="faq-question" onclick="toggleFaq(this)">طيب لازم اشترى طابعه و مكبس حراري؟<span class="faq-chevron">∨</span></div>
+        <div class="faq-answer"><p>لا ابدا انتى بتشترى الخامات من المصدر و بالمكواه و بخطوات محدده هتقدرى تثبتى الورق فى اقل من ١٠ دقايق</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== UPSELL — DECOUPAGE ========== -->
+<section class="upsell">
+  <div class="container">
+    <div class="upsell-promo-img">
+      <img src="newimg/WhatsApp Image 2026-07-07 at 12.30.26 AM.jpeg" alt="كورس الديكوباج الشامل للمبتدئين — 7 خامات">
+    </div>
+    <div class="upsell-card">
+      <div class="upsell-badge">عرض خاص</div>
+      <h3>ضيفي <span class="rose">700 ج</span> واحصلي على<br>كورس الديكوباج الشامل + الخامات الأساسية</h3>
+      <p class="upsell-desc">الكورس بيغطي كل أساسيات الديكوباج من الصفر — من تجهيز السطح لحد القطعة النهائية. الخامات الأساسية متضمنة، يعني تقدري تبدأي فورًا من غير ما تشتري حاجة إضافية.</p>
+      <div class="upsell-materials">
+        <h4>الخامات المستخدمة</h4>
+        <ul>
+          <li>طقم ٤ فرش</li>
+          <li>علبه لون ابيض</li>
+          <li>علبه ورنيش</li>
+          <li>١ منديل نابكن للديكوباج</li>
+          <li>١ورقه ليزر</li>
+          <li>١ ترانسفير حرارى للقماش</li>
+          <li>حامل موبيل خشب</li>
+          <li>١ ترانسفير سحرى للمج</li>
+        </ul>
+      </div>
+      <div class="upsell-highlights">
+        <span class="upsell-tag">ديكوباج على الخشب</span>
+        <span class="upsell-tag">ديكوباج على الزجاج</span>
+        <span class="upsell-tag">ديكوباج على النحاس</span>
+        <span class="upsell-tag">ديكوباج على الخوص</span>
+        <span class="upsell-tag">الخامات متضمنة</span>
+        <span class="upsell-tag">من الصفر للاحتراف</span>
+      </div>
+      <div class="upsell-price-row">
+        <span class="upsell-old-price">1,300 ج</span>
+        <span class="upsell-new-price">700 ج فقط</span>
+      </div>
+      <a href="checkout.html" class="cta-btn cta-btn--lg">ضيفي العرض وابدئي دلوقتي</a>
+    </div>
+
+    <div class="decoupage-curriculum">
+      <h3 class="decoupage-curriculum-title">محتوى <span class="rose">كورس الديكوباج</span> — أكثر من ٢٤ درس</h3>
+      <p class="decoupage-curriculum-sub">شوفي عينة من الدروس اللي هتتعلميها — من الأساسيات لحد المشاريع المتقدمة</p>
+      <div class="decoupage-chapters">
+
+        <!-- أساسيات الديكوباج -->
+        <div class="decoupage-chapter open">
+          <div class="decoupage-chapter-header" onclick="toggleDecoupageChapter(this)">
+            <div>
+              <h4>المحور الأول — أساسيات الديكوباج</h4>
+              <p class="lesson-count">٨ دروس — من الصفر لحد ما تكوني جاهزة</p>
+            </div>
+            <span class="decoupage-chapter-toggle">∨</span>
+          </div>
+          <div class="decoupage-lessons-grid">
+            <div class="decoupage-lesson-card">
+              <img src="newimg/WhatsApp Image 2026-07-07 at 12.30.47 AM.jpeg" alt="عجلة الألوان — النظرية الأساسية">
+              <p>عجلة الألوان — النظرية الأساسية</p>
+            </div>
+            <div class="decoupage-lesson-card">
+              <img src="newimg/WhatsApp Image 2026-07-07 at 12.31.28 AM.jpeg" alt="ما هو فن الديكوباج؟">
+              <p>الدرس ١ — ما هو فن الديكوباج؟</p>
+            </div>
+            <div class="decoupage-lesson-card">
+              <img src="newimg/WhatsApp Image 2026-07-07 at 12.31.28 AM (1).jpeg" alt="أنواع الأسطح">
+              <p>الدرس ٢ — أنواع الأسطح في الديكوباج</p>
+            </div>
+            <div class="decoupage-lesson-card">
+              <img src="newimg/WhatsApp Image 2026-07-07 at 12.31.29 AM (2).jpeg" alt="أنواع الورق">
+              <p>الدرس ٣ — أنواع الورق المناسبة</p>
+            </div>
+            <div class="decoupage-lesson-card">
+              <img src="newimg/WhatsApp Image 2026-07-07 at 12.31.29 AM.jpeg" alt="أنواع الألوان">
+              <p>الدرس ٤ — أنواع الألوان المستخدمة</p>
+            </div>
+            <div class="decoupage-lesson-card">
+              <img src="newimg/WhatsApp Image 2026-07-07 at 12.31.30 AM.jpeg" alt="أنواع الورنيش">
+              <p>الدرس ٥ — أنواع الورنيش والتشطيب</p>
+            </div>
+            <div class="decoupage-lesson-card">
+              <img src="newimg/WhatsApp Image 2026-07-07 at 12.31.29 AM (1).jpeg" alt="أنواع الفرش">
+              <p>الدرس ٦ — أنواع الفرش المستخدمة</p>
+            </div>
+            <div class="decoupage-lesson-card">
+              <img src="newimg/WhatsApp Image 2026-07-07 at 12.31.29 AM (3).jpeg" alt="خامات من البيت">
+              <p>الدرس ٧ — خامات وأدوات متوفرة في البيت</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- الديكوباج على الخشب -->
+        <div class="decoupage-chapter">
+          <div class="decoupage-chapter-header" onclick="toggleDecoupageChapter(this)">
+            <div>
+              <h4>المحور الثاني — الديكوباج على الخشب</h4>
+              <p class="lesson-count">١٣ درس عملي — مشاريع كاملة خطوة بخطوة</p>
+            </div>
+            <span class="decoupage-chapter-toggle">∨</span>
+          </div>
+          <div class="decoupage-lessons-grid">
+            <div class="decoupage-lesson-card">
+              <img src="newimg/WhatsApp Image 2026-07-07 at 12.31.53 AM.jpeg" alt="لوحة خشبية بطباعة ليزر">
+              <p>الدرس ١ — لوحة خشبية بطباعة ليزر</p>
+            </div>
+            <div class="decoupage-lesson-card">
+              <img src="newimg/WhatsApp Image 2026-07-07 at 12.31.53 AM (1).jpeg" alt="تقنية الشيبي شيك">
+              <p>الدرس ٢ — تقنية الشيبي شيك المتهالك</p>
+            </div>
+            <div class="decoupage-lesson-card">
+              <img src="newimg/WhatsApp Image 2026-07-07 at 12.31.53 AM (2).jpeg" alt="تزيين بورق الذهب">
+              <p>الدرس ٣ — تزيين صينية بورق الذهب</p>
+            </div>
+            <div class="decoupage-lesson-card">
+              <img src="newimg/WhatsApp Image 2026-07-07 at 12.31.54 AM.jpeg" alt="لصق المناديل — الطريقة الأولى">
+              <p>الدرس ٤ — لصق المناديل على الخشب</p>
+            </div>
+            <div class="decoupage-lesson-card">
+              <img src="newimg/WhatsApp Image 2026-07-07 at 12.31.54 AM (1).jpeg" alt="لصق المناديل — الطريقة الثانية">
+              <p>الدرس ٥ — لصق المناديل على الأسطح الكبيرة</p>
+            </div>
+            <div class="decoupage-lesson-card">
+              <img src="newimg/WhatsApp Image 2026-07-07 at 12.31.54 AM (2).jpeg" alt="نقل حراري DTF">
+              <p>الدرس ٦ — نقل حراري DTF على الخشب</p>
+            </div>
+            <div class="decoupage-lesson-card">
+              <img src="newimg/WhatsApp Image 2026-07-07 at 12.31.54 AM (3).jpeg" alt="ورق البردة والذهب">
+              <p>الدرس ٧ — ورق البردة واللمسات الذهبية</p>
+            </div>
+            <div class="decoupage-lesson-card">
+              <img src="newimg/WhatsApp Image 2026-07-07 at 12.31.55 AM.jpeg" alt="ركن القهوة الخشبي">
+              <p>الدرس ٨ — ركن القهوة الخشبي المخصص</p>
+            </div>
+            <div class="decoupage-lesson-card">
+              <img src="newimg/WhatsApp Image 2026-07-07 at 12.31.55 AM (1).jpeg" alt="تقنية التشقق والتقادم">
+              <p>الدرس ٩ — تقنية التشقق وتقادم الصندوق</p>
+            </div>
+            <div class="decoupage-lesson-card">
+              <img src="newimg/WhatsApp Image 2026-07-07 at 12.31.55 AM (2).jpeg" alt="تقنية القوالب بالصلصال">
+              <p>الدرس ١٠ — تقنية القوالب بالصلصال</p>
+            </div>
+            <div class="decoupage-lesson-card">
+              <img src="newimg/WhatsApp Image 2026-07-07 at 12.31.56 AM.jpeg" alt="صندوق مغطى بالورق">
+              <p>الدرس ١١ — صندوق مغطى بالورق المخصص</p>
+            </div>
+            <div class="decoupage-lesson-card">
+              <img src="newimg/WhatsApp Image 2026-07-07 at 12.31.56 AM (1).jpeg" alt="لوحات ديكور">
+              <p>الدرس ١٢ — لوحات ديكور بالمناديل وورق البردة</p>
+            </div>
+            <div class="decoupage-lesson-card">
+              <img src="newimg/WhatsApp Image 2026-07-07 at 12.31.56 AM (2).jpeg" alt="تقنيات التقادم للوحات">
+              <p>الدرس ١٣ — تقنيات التقادم والتهالك للوحات</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- محاور متخصصة -->
+        <div class="decoupage-chapter">
+          <div class="decoupage-chapter-header" onclick="toggleDecoupageChapter(this)">
+            <div>
+              <h4>المحور الثالث — محاور متخصصة</h4>
+              <p class="lesson-count">٣ دروس — نحاس، خوص، وزجاج</p>
+            </div>
+            <span class="decoupage-chapter-toggle">∨</span>
+          </div>
+          <div class="decoupage-lessons-grid">
+            <div class="decoupage-lesson-card">
+              <img src="newimg/WhatsApp Image 2026-07-07 at 12.32.24 AM.jpeg" alt="الديكوباج على النحاس">
+              <p>الديكوباج على النحاس — طقم قهوة تركي</p>
+            </div>
+            <div class="decoupage-lesson-card">
+              <img src="newimg/WhatsApp Image 2026-07-07 at 12.32.24 AM (1).jpeg" alt="الديكوباج على الخوص">
+              <p>الديكوباج على الخوص — شنطة منسوجة</p>
+            </div>
+            <div class="decoupage-lesson-card">
+              <img src="newimg/WhatsApp Image 2026-07-07 at 12.32.24 AM (2).jpeg" alt="الديكوباج على الزجاج">
+              <p>الديكوباج على الزجاج — تزيين البرطمانات</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -804,25 +1179,39 @@ section{padding:60px 0}
 
 <!-- ========== SCRIPTS ========== -->
 <script>
-document.addEventListener('DOMContentLoaded',()=>{
-  let totalSeconds = 5 * 60;
-  function updateTimer(){
-    const days = Math.floor(totalSeconds / 86400);
-    const hours = Math.floor((totalSeconds % 86400) / 3600);
-    const minutes = Math.floor((totalSeconds % 3600) / 60);
-    const seconds = totalSeconds % 60;
-    document.getElementById('timer-days').textContent = String(days).padStart(2,'0');
-    document.getElementById('timer-hours').textContent = String(hours).padStart(2,'0');
-    document.getElementById('timer-minutes').textContent = String(minutes).padStart(2,'0');
-    document.getElementById('timer-seconds').textContent = String(seconds).padStart(2,'0');
-    if(totalSeconds > 0) totalSeconds--;
+document.addEventListener('DOMContentLoaded', () => {
+  // تاريخ البداية — غيّره لأي تاريخ عايزه (UTC)
+  // الصيغة: new Date(Date.UTC(سنة, شهر-1, يوم, ساعة, دقيقة, ثانية))
+  const START_DATE = new Date(Date.UTC(2025, 5, 28, 0, 0, 0)); // 28 يونيو 2025
+  const CYCLE_SECONDS = 3 * 24 * 60 * 60; // 3 أيام = 259200 ثانية
+
+  function updateTimer() {
+    const nowSeconds = Math.floor(Date.now() / 1000);
+    const startSeconds = Math.floor(START_DATE.getTime() / 1000);
+    const elapsed = nowSeconds - startSeconds;
+    const remaining = CYCLE_SECONDS - (elapsed % CYCLE_SECONDS);
+
+    const days    = Math.floor(remaining / 86400);
+    const hours   = Math.floor((remaining % 86400) / 3600);
+    const minutes = Math.floor((remaining % 3600) / 60);
+    const seconds = remaining % 60;
+
+    document.getElementById('timer-days').textContent    = String(days).padStart(2, '0');
+    document.getElementById('timer-hours').textContent   = String(hours).padStart(2, '0');
+    document.getElementById('timer-minutes').textContent = String(minutes).padStart(2, '0');
+    document.getElementById('timer-seconds').textContent = String(seconds).padStart(2, '0');
   }
+
   updateTimer();
   setInterval(updateTimer, 1000);
 });
 
 function toggleChapter(btn){
   btn.closest('.chapter').classList.toggle('open');
+}
+
+function toggleDecoupageChapter(header){
+  header.closest('.decoupage-chapter').classList.toggle('open');
 }
 
 function toggleFaq(el){
